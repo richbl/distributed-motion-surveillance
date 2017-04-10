@@ -94,5 +94,4 @@ module ServerConfig
   # be detected when ping'd
   #
   MACS_TO_FIND = ['24:da:9b:0d:53:8f', 'f8:cf:c5:d2:bb:9e'].freeze
-  # MACS_TO_FIND = ['e8:cf:c5:d2:bb:9e'].freeze
 end
