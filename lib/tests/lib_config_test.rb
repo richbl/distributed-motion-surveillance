@@ -20,7 +20,6 @@ class TestLibConfig < Test::Unit::TestCase
     assert_equal File.file?(LibConfig::GREP), true
     assert_equal File.file?(LibConfig::KILL), true
     assert_equal File.file?(LibConfig::PING), true
-    assert_equal File.file?(LibConfig::PS), true
     assert_equal File.file?(LibConfig::MOTION), true
   end
 

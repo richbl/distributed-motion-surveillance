@@ -13,7 +13,6 @@ module LibConfig
   GREP = '/bin/grep'.freeze
   KILL = '/bin/kill'.freeze
   PING = '/bin/ping'.freeze
-  PS = '/bin/ps'.freeze
   MOTION = '/usr/bin/motion'.freeze
   MOTION_PID_PATH = '/var/run/motion'.freeze
   MOTION_PID_NAME = 'motion.pid'.freeze

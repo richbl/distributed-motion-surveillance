@@ -31,12 +31,17 @@ class ServerManager
   #
   def determine_motion_state
     @server.logging 'checking motion state'
-    time_in_range? || !device_on_lan? ? start_motion_daemon : stop_motion_daemon
+
+    if time_in_range? || !device_on_lan?
+      enable_motion_daemon
+    else
+      disable_motion_daemon
+    end
   end
 
   # ---------------------------------------------------------------------------
   #
-  def start_motion_daemon
+  def enable_motion_daemon
     return @motion_state unless @motion_state == 'disable'
 
     @server.logging 'motion_state set to ENABLE'
@@ -47,7 +52,7 @@ class ServerManager
 
   # ---------------------------------------------------------------------------
   #
-  def stop_motion_daemon
+  def disable_motion_daemon
     return @motion_state unless @motion_state == 'enable'
 
     @server.logging 'motion_state set to DISABLE'
