@@ -130,8 +130,8 @@ The distributed client component of **DMS**, MotionClient, runs on each client e
 	│   ├── client_manager.rb
 	│   └── client_start.rb
 	└── motion_mail
-	        ├── motion_mail_config.rb
-	        └── motion_mail.rb
+	        ├── mail_config.rb
+	        └── mail.rb
 	```
 
 ### 4. Configure DMS Package Components
@@ -182,7 +182,7 @@ MotionMail is the **DMS** client-side component responsible for sending an email
 
 The syntax for these [Motion](https://motion-project.github.io/) commands are:
   
-	<on_picture_save|on_movie_end> <absolute path to ruby> <absolute path to motion_mail.rb> <%D %f %t>
+	<on_picture_save|on_movie_end> <absolute path to ruby> <absolute path to mail.rb> <%D %f %t>
 
 These commands are saved in the [Motion](https://motion-project.github.io/) configuration file called `motion.conf` (located in `/etc/motion`).
 
@@ -192,7 +192,7 @@ These commands are saved in the [Motion](https://motion-project.github.io/) conf
 
 	The easiest way to edit this file is to append the `on_picture_save` or `on_movie_end` command at the end of the `motion.conf` file. For example:
 
-		$ echo 'on_picture_save /usr/bin/ruby /etc/**DMS**/motion_mail/motion_mail.rb %D %f %t' >> /etc/motion/motion.conf
+		$ echo 'on_picture_save /usr/bin/ruby /etc/**DMS**/motion_mail/mail.rb %D %f %t' >> /etc/motion/motion.conf
 
 2. Restart [Motion](https://motion-project.github.io/) to have the update to `motion.conf` take effect. 
 
