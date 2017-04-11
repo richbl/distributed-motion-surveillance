@@ -83,7 +83,7 @@ MotionMail is very tightly integrated into [Motion](https://motion-project.githu
 
 The syntax for these [Motion](https://motion-project.github.io/) commands are:
   
-	<on_picture_save|on_movie_end> <absolute path to ruby> <absolute path to motion_mail.rb> <%D %f %t>
+	<on_picture_save|on_movie_end> <absolute path to ruby> <absolute path to mail.rb> <%D %f %t>
 
 These commands are managed through the [Motion](https://motion-project.github.io/) configuration file called `motion.conf`.
 
