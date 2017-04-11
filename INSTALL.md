@@ -131,6 +131,7 @@ The distributed client component of **DMS**, MotionClient, runs on each client e
 	│   └── client_start.rb
 	└── motion_mail
 	        ├── mail_config.rb
+		├── mail_logging.rb
 	        └── mail.rb
 	```
 
