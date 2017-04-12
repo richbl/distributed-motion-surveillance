@@ -11,11 +11,10 @@ require_relative 'lib_config'
 #
 module LibMotion
   # ----------------------------------------------------------------------------
-  # determine if motion is installed and the pid folder is configured properly
+  # determine if motion is installed
   #
   def self.confirm_motion_install?
-    system('type motion > /dev/null 2>&1') &&
-      File.directory?(LibConfig::MOTION_PID_PATH)
+    system('type motion > /dev/null 2>&1')
   end
 
   # ----------------------------------------------------------------------------
@@ -31,8 +30,9 @@ module LibMotion
   #
   def self.determine_motion_pid
     return 0 unless running_motion?
-    path = "#{LibConfig::MOTION_PID_PATH}/#{LibConfig::MOTION_PID_NAME}"
-    File.read(path)
+    File.read(
+      "#{LibConfig::MOTION_PID_PATH}/#{LibConfig.motion_servermotion_server}"
+    )
   end
 
   # ----------------------------------------------------------------------------
