@@ -205,7 +205,7 @@ These commands are saved in the [Motion](https://motion-project.github.io/) conf
 
 	The easiest way to edit this file is to append the `on_picture_save` or `on_movie_end` command at the end of the `motion.conf` file. For example:
 
-		$ sudo echo 'on_picture_save /usr/bin/ruby /etc/distributed-motion-surveillance/motion_mail/mail.rb %D %f %t' >> /etc/motion/motion.conf
+		$ sudo sh -c "echo 'on_picture_save /usr/bin/ruby /etc/distributed-motion-surveillance/motion_mail/mail.rb %D %f %t' >> /etc/motion/motion.conf"
 
 2. Restart [Motion](https://motion-project.github.io/) to have the update to `motion.conf` take effect
 
