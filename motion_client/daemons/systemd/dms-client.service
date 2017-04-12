@@ -1,10 +1,10 @@
 [Unit]
-Description=Distributed Motion Surveillance (DMS) Server
+Description=Distributed Motion Surveillance (DMS) Client
 After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/ruby /etc/distributed-motion-surveillance/motion_server/server_start.rb
+ExecStart=/usr/bin/ruby /etc/distributed-motion-surveillance/motion_client/client_start.rb
 
 
 [Install]
