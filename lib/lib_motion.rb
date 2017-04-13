@@ -30,9 +30,7 @@ module LibMotion
   #
   def self.determine_motion_pid
     return 0 unless running_motion?
-    File.read(
-      "#{LibConfig::MOTION_PID_PATH}/#{LibConfig.motion_servermotion_server}"
-    )
+    File.read("#{LibConfig::MOTION_PID_PATH}/#{LibConfig::MOTION_PID_NAME}")
   end
 
   # ----------------------------------------------------------------------------

@@ -21,6 +21,7 @@ class TestLibMotion < Test::Unit::TestCase
 
   def test_lib_motion_daemon
     assert_equal LibMotion.motion_daemon?('start'), true
+    sleep 2 # delay to start motion daemon
     assert_equal LibMotion.motion_daemon?('stop'), true
   end
 end
