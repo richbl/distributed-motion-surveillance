@@ -8,7 +8,7 @@ module ClientConfig
   # ---------------------------------------------------------------------------
   # enable (1) or disable (0) application logging
   #
-  # NOTE: passing in 2 sets logging to STDOUT
+  # NOTE: passing in 2 sets logging to STDOUT (used when running as daemon)
   #
   LOGGING = 2
 
@@ -17,20 +17,20 @@ module ClientConfig
   #
   # ignored if LOGGING == 0
   #
-  LOG_FILENAME = 'motion_client.log'.freeze
+  LOG_FILENAME = 'dms_client.log'.freeze
 
   # ---------------------------------------------------------------------------
   # location of logfile (full path)
   #
   # by default, this is in the local folder (e.g.,
-  # /etc/motion_surveillance/motion_monitor)
+  # /etc/distributed_motion_surveillance/dms_client)
   #
   # ignored if LOGGING == 0
   #
   LOG_LOCATION = File.expand_path(File.dirname(__FILE__))
 
   # ---------------------------------------------------------------------------
-  # ip, port on which to run the motion server
+  # ip, port on which to run the dms server
   #
   SERVER_IP = 'localhost'.freeze
   SERVER_PORT = 1965

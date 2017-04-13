@@ -8,6 +8,6 @@ require_relative 'client_connector'
 require_relative 'client_manager'
 require_relative 'client_config'
 
-motion_client = ClientManager.new
+dms_client = ClientManager.new
 ClientConnector.new(ClientConfig::SERVER_IP, ClientConfig::SERVER_PORT,
-                    motion_client.method(:process_motion_state))
+                    dms_client.method(:process_motion_state))

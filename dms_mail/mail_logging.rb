@@ -10,7 +10,7 @@ require_relative 'mail_config'
 # -----------------------------------------------------------------------------
 # wrap the LibLog logging object with server-side configuration options
 #
-class MotionMailLogging
+class DMSMailLogging
   # ---------------------------------------------------------------------------
   #
   def initialize
@@ -21,16 +21,16 @@ class MotionMailLogging
   # create log file as defined in configuration
   #
   def create_logfile
-    LibLog.create_logfile(MotionMailConfig::LOGGING,
-                          MotionMailConfig::LOG_LOCATION,
-                          MotionMailConfig::LOG_FILENAME)
+    LibLog.create_logfile(DMSMailConfig::LOGGING,
+                          DMSMailConfig::LOG_LOCATION,
+                          DMSMailConfig::LOG_FILENAME)
   end
 
   # ---------------------------------------------------------------------------
   # logging wrapper to add severity levels
   #
   def logging(msg, severity = 1)
-    return if MotionMailConfig::LOGGING.zero?
+    return if DMSMailConfig::LOGGING.zero?
     LibLog.log(msg, severity)
   end
 end

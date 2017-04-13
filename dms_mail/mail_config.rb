@@ -4,14 +4,11 @@
 # which can be found in the project LICENSE file
 #
 
-# -----------------------------------------------------------------------------
-# email configuration file
-#
-module MotionMailConfig
+module DMSMailConfig
   # ---------------------------------------------------------------------------
   # enable (1) or disable (0) application logging
   #
-  # NOTE: passing in 2 sets logging to STDOUT
+  # NOTE: passing in 2 sets logging to STDOUT (used when running as daemon)
   #
   LOGGING = 2
 
@@ -20,12 +17,12 @@ module MotionMailConfig
   #
   # ignored if LOGGING == 0
   #
-  LOG_FILENAME = 'motion_mail.log'.freeze
+  LOG_FILENAME = 'dms_mail.log'.freeze
 
   # ----------------------------------------------------------------------------
   # location of logfile (full path)
-  # by default, this is in the motion_mail folder (e.g.,
-  # /etc/motion_surveillance/motion_mail)
+  # by default, this is in the dms_mail folder (e.g.,
+  # /etc/distributed_motion_surveillance/dms_mail)
   #
   # ignored if LOGGING == 0
   #

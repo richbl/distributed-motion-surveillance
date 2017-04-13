@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/ruby /etc/distributed-motion-surveillance/motion_client/client_start.rb
+ExecStart=/usr/bin/ruby /etc/distributed-motion-surveillance/dms_client/client_start.rb
 
 
 [Install]

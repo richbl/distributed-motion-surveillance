@@ -7,4 +7,4 @@
 require 'rubygems'
 require 'daemons'
 
-Daemons.run('client_start.rb')
+Daemons.run('../../client_start.rb')

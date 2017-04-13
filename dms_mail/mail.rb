@@ -16,12 +16,12 @@ require_relative 'mail_logging'
 # -----------------------------------------------------------------------------
 # email methods
 #
-class MotionMail
+class DMSMail
   # ---------------------------------------------------------------------------
   # initialize
   #
   def self.initialize
-    @mail = MotionMailLogging.new
+    @mail = DMSMailLogging.new
     @mail.logging "BEGIN #{self.class}"
   end
 
@@ -89,7 +89,7 @@ class MotionMail
   # compose the mail.header object
   #
   def self.mail_header(mail, event_details)
-    mail.header(MotionMailConfig::EMAIL_TO, MotionMailConfig::EMAIL_FROM,
+    mail.header(DMSMailConfig::EMAIL_TO, DMSMailConfig::EMAIL_FROM,
                 'Motion Detected on Camera #' + event_details[:camera_number] +
                 ' at ' + event_details[:date])
   end
@@ -99,13 +99,13 @@ class MotionMail
   #
   def self.mail_delivery_options(mail)
     mail.delivery_options(
-      MotionMailConfig::SMTP_ADDRESS,
-      MotionMailConfig::SMTP_PORT.to_i,
-      MotionMailConfig::SMTP_DOMAIN,
-      MotionMailConfig::SMTP_USERNAME,
-      MotionMailConfig::SMTP_PASSWORD,
-      MotionMailConfig::SMTP_AUTHENTICATION,
-      MotionMailConfig::SMTP_ENABLE_STARTTLS_AUTO
+      DMSMailConfig::SMTP_ADDRESS,
+      DMSMailConfig::SMTP_PORT.to_i,
+      DMSMailConfig::SMTP_DOMAIN,
+      DMSMailConfig::SMTP_USERNAME,
+      DMSMailConfig::SMTP_PASSWORD,
+      DMSMailConfig::SMTP_AUTHENTICATION,
+      DMSMailConfig::SMTP_ENABLE_STARTTLS_AUTO
     )
   end
 
@@ -120,7 +120,7 @@ class MotionMail
     }
 
     replacement_string.each do |k, v|
-      MotionMailConfig::EMAIL_BODY.dup.sub!(k, v)
+      DMSMailConfig::EMAIL_BODY.dup.sub!(k, v)
     end
   end
 
@@ -142,13 +142,13 @@ class MotionMail
 
     mail.send_mail
 
-    @mail.logging 'Email sent to ' + MotionMailConfig::EMAIL_TO
+    @mail.logging 'Email sent to ' + DMSMailConfig::EMAIL_TO
   end
 
   # ----------------------------------------------------------------------------
 
-  @mail = MotionMailLogging.new
-  @mail.logging 'BEGIN MotionMail'
+  @mail = DMSMailLogging.new
+  @mail.logging 'BEGIN DMSMail'
 
   event_details, event_media = parse_event
   generate_smtp_email(event_details, event_media)

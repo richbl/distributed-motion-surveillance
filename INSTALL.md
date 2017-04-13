@@ -5,10 +5,10 @@ The installation of **DMS** includes:
 
  1. The installation and configuration of the [Motion](https://motion-project.github.io/) software program (required on client devices only)
  2. The installation and configuration of **DMS** components which include:
- 
-   - **MotionServer**: required, installed on the server
-   - **MotionClient**: required, installed on client device(s)
-   - **MotionMail**: optional, installed on client device(s)
+
+   - **DMSServer**: required, installed on the server
+   - **DMSClient**: required, installed on client device(s)
+   - **DMSMail**: optional, installed on client device(s)
    - **Lib**: required, installed on server and client device(s)
 > For details on **DMS** components, see the project introduction ([`README.md`](https://github.com/richbl/distributed-motion-surveillance/blob/master/README.md))
 
@@ -17,7 +17,7 @@ The installation of **DMS** includes:
 ### 1. Confirm That All DMS Requirements are Met Before Proceeding
 
 1. Review **DMS** requirements section in the [`README.md`](https://github.com/richbl/distributed-motion-surveillance/blob/master/README.md)
- 
+
 	To summarize these requirements: the operating system is Unix-like (*e.g.*, Linux); the [Motion](https://motion-project.github.io/) software program should be installed on all device clients; the Ruby language, and all required Ruby gems should be installed and fully operational.
 
 ### 2. Confirm the Installation and Configuration of the [Motion](https://motion-project.github.io/) Software Program
@@ -25,7 +25,7 @@ The installation of **DMS** includes:
  1. Confirm the installation of the [Motion](https://motion-project.github.io/) software program package **on all device clients** (*e.g.*, Raspberry Pi)
 
 	Before installing **DMS**, the [Motion](https://motion-project.github.io/) software program should to be correctly installed, configured and operational on all participating device clients. Details for [Motion](https://motion-project.github.io/) installation can be found on the [Motion website](https://htmlpreview.github.io/?https://github.com/Motion-Project/motion/blob/master/motion_guide.html).
- 
+
  2. Configure [Motion](https://motion-project.github.io/) to run as a daemon
 
 	For proper operation with **DMS**, [Motion](https://motion-project.github.io/) should be set to run in daemon mode (which permits [Motion](https://motion-project.github.io/) to run as a background process). This is achieved through an edit made to the `motion.conf` file located in the [Motion](https://motion-project.github.io/) folder (*e.g.,* `/etc/motion`).
@@ -35,21 +35,21 @@ The installation of **DMS** includes:
 	    ############################################################
 	    # Daemon
 	    ############################################################
-	    
+
 	    # Start in daemon (background) mode and release terminal (default: off)
 	    daemon on
 
 ### 3. Download and Install the DMS Package
 #### Server Installation
-The server component of **DMS**, MotionServer, is centrally responsible for the logic of enabling/disabling the video surveillance system (determining when to start/stop the [Motion](https://motion-project.github.io/)  software package on each client endpoint). Note, however, that MotionServer does not have any direct dependencies on the [Motion](https://motion-project.github.io/) sofware program.
+The server component of **DMS**, DMSServer, is centrally responsible for the logic of enabling/disabling the video surveillance system (determining when to start/stop the [Motion](https://motion-project.github.io/)  software package on each client endpoint). Note, however, that DMSServer does not have any direct dependencies on the [Motion](https://motion-project.github.io/) sofware program.
 
- 1. Download the repository zip file from the [DMS repository](https://github.com/richbl/distributed-motion-surveillance) and unzip into a temporary folder
+ 1. Download the repository zip file from the [DMS release repository](https://github.com/richbl/distributed-motion-surveillance/releases) and unzip into a temporary folder
 
- 2. Optionally, delete non-essential top-level files, as well as the `motion_client`, and `motion_mail` components (as these components are unused on the server), but preserve these component folders: `lib` and `motion_server`
+ 2. Optionally, delete non-essential top-level files, as well as the `dms_client`, and `dms_mail` components (as these components are unused on the server), but preserve these component folders: `lib` and `dms_server`
 
 	> The top-level informational files (*e.g.*, `README.MD`, `INSTALL.MD`, *etc.*) are not required to properly configure and run **DMS**. They may be safely deleted.
 
-	The organization of the server components is represented in the remaining structure of the parent `distributed-motion-surveillance` folder. 
+	The organization of the server components is represented in the remaining structure of the parent `distributed-motion-surveillance` folder.
 
 	> 	**Note:** the location of this folder structure is not important, but the relative folder structure and names must be preserved
 
@@ -75,7 +75,7 @@ The server component of **DMS**, MotionServer, is centrally responsible for the 
 	│       ├── lib_motion_test.rb
 	│       ├── lib_network_test.rb
 	│       └── libs_test.rb
-	└── motion_server
+	└── dms_server
 	    ├── daemons
 	    │   ├── systemd
 	    │   │   └── dms-server.service
@@ -92,15 +92,15 @@ The server component of **DMS**, MotionServer, is centrally responsible for the 
 	```
 
 #### Client Installation
-The distributed client component of **DMS**, MotionClient, runs on each client endpoint, and is responsible physically starting/stopping its native video camera capture (starting/stopping its locally-installed instance of the [Motion](https://motion-project.github.io/) software package).
+The distributed client component of **DMS**, DMSClient, runs on each client endpoint, and is responsible physically starting/stopping its native video camera capture (starting/stopping its locally-installed instance of the [Motion](https://motion-project.github.io/) software package).
 
  1. Download the repository zip file from the [DMS repository](https://github.com/richbl/distributed-motion-surveillance) and unzip into a temporary folder
 
- 2. Optionally, delete non-essential top-level files, as well as the `motion_server` component (as this component is unused on the client), but preserve these component folders: `lib`, `motion_mail`, and `motion_client`.
+ 2. Optionally, delete non-essential top-level files, as well as the `dms_server` component (as this component is unused on the client), but preserve these component folders: `lib`, `dms_mail`, and `dms_client`.
 
 	> The top-level informational files (*e.g.*, `README.MD`, `INSTALL.MD`, *etc.*) are not required to properly configure and run **DMS**. They may be safely deleted.
 
-	The organization of the client components is represented in the remaining structure of the parent `distributed-motion-surveillance` folder. 
+	The organization of the client components is represented in the remaining structure of the parent `distributed-motion-surveillance` folder.
 
 	> 	**Note:** the location of this folder structure is not important, but the relative folder structure and names must be preserved
 
@@ -126,7 +126,7 @@ The distributed client component of **DMS**, MotionClient, runs on each client e
 	│       ├── lib_motion_test.rb
 	│       ├── lib_network_test.rb
 	│       └── libs_test.rb
-	├── motion_client
+	├── dms_client
 	│   ├── client_config.rb
 	│   ├── client_connector.rb
 	│   ├── client_logging.rb
@@ -137,7 +137,7 @@ The distributed client component of **DMS**, MotionClient, runs on each client e
 	│       │   └── dms-client.service
 	│       └── terminal
 	│           └── client_daemon.rb
-	└── motion_mail
+	└── dms_mail
 	    ├── mail_config.rb
 	    ├── mail_logging.rb
 	    └── mail.rb
@@ -148,9 +148,9 @@ The distributed client component of **DMS**, MotionClient, runs on each client e
 
 1. Edit **DMS** `*_config.rb` configuration files
 
-	All server-side package components--MotionServer and Lib--should be configured for proper operation. Each component includes a separate `*_config.rb` file which serves the purpose of isolating user-configurable parameters from the rest of the code:
-	
-	- 	`server_config.rb`, found in the `distributed_motion_surveillance/motion_server` folder, is used for:
+	All server-side package components--DMSServer and Lib--should be configured for proper operation. Each component includes a separate `*_config.rb` file which serves the purpose of isolating user-configurable parameters from the rest of the code:
+
+	- 	`server_config.rb`, found in the `distributed_motion_surveillance/dms_server` folder, is used for:
 		- setting the server port
 		- determining what devices to monitor (MAC addresses)
 		- determining when to run the Always On feature (set time range)
@@ -160,73 +160,73 @@ The distributed client component of **DMS**, MotionClient, runs on each client e
 
 	Each configuration file is self-documenting, and provides examples of common default values.
 
-2. Optional: configure server to run the MotionServer daemon at startup
+2. Optional: configure server to run the DMSServer daemon at startup
 
-	As different Unix-like systems use different approaches for system service management and startup, this step is beyond the scope of the install procedure. However, this project does include two sample daemon files used for running MotionServer as a daemon, depending on the use case:
-	- Running from terminal: the file to run is `server_daemon.rb`, located in  the `distributed_motion_surveillance/motion_server/daemons/terminal` folder
-	- Running with [`systemd`](https://en.wikipedia.org/wiki/Systemd): the file to use for configuration is `dms-server.service`, located in  the `distributed_motion_surveillance/motion_server/daemons/systemd` folder
+	As different Unix-like systems use different approaches for system service management and startup, this step is beyond the scope of the install procedure. However, this project does include two sample daemon files used for running DMSServer as a daemon, depending on the use case:
+	- Running from terminal: the file to run is `server_daemon.rb`, located in  the `distributed_motion_surveillance/dms_server/daemons/terminal` folder
+	- Running with [`systemd`](https://en.wikipedia.org/wiki/Systemd): the file to use for configuration is `dms-server.service`, located in  the `distributed_motion_surveillance/dms_server/daemons/systemd` folder
 
 #### Client Configuration
 
 1. Edit **DMS** `*_config.rb` configuration files
 
-	All client-side package components--MotionClient, MotionMail, and Lib--should be configured for proper operation. Each component includes a separate `*_config.rb` file which serves the purpose of isolating user-configurable parameters from the rest of the code:
-	
-- 	`client_config.rb`, found in the `distributed_motion_surveillance/motion_client` folder, is used for:
+	All client-side package components--DMSClient, DMSMail, and Lib--should be configured for proper operation. Each component includes a separate `*_config.rb` file which serves the purpose of isolating user-configurable parameters from the rest of the code:
+
+- 	`client_config.rb`, found in the `distributed_motion_surveillance/dms_client` folder, is used for:
 		- setting the server IP address and port
 		- setting the frequency to check to server for changes to motion state
 		- configuring component logging options
-- 	`mail_config.rb`, found in the `distributed_motion_surveillance/motion_mail` folder, is used for:
+- 	`mail_config.rb`, found in the `distributed_motion_surveillance/dms_mail` folder, is used for:
 		- setting email configuration options
 		- configuring component logging options
 - `lib_config.rb`, found in the `distributed_motion_surveillance/lib` folder, is used to configure the location of system-level commands (*e.g.*, /bin/ping). In general, these settings are OS-specific, and should not need to be changed when running on a Debian-based system
 
 	Each configuration file is self-documenting, and provides examples of common default values.
 
-2. Optional: configure client device to run the MotionClient daemon at startup
+2. Optional: configure client device to run the DMSClient daemon at startup
 
-	As different Unix-like systems use different approaches for system service management and startup, this step is beyond the scope of the install procedure. However, this project does include two sample daemon files used for running MotionClient as a daemon, depending on the use case:
-	- Running from terminal: the file to run is `client_daemon.rb`, located in  the `distributed_motion_surveillance/motion_client/daemons/terminal` folder
-	- Running with [`systemd`](https://en.wikipedia.org/wiki/Systemd): the file to use for configuration is `dms-client.service`, located in  the `distributed_motion_surveillance/motion_client/daemons/systemd` folder
+	As different Unix-like systems use different approaches for system service management and startup, this step is beyond the scope of the install procedure. However, this project does include two sample daemon files used for running DMSClient as a daemon, depending on the use case:
+	- Running from terminal: the file to run is `client_daemon.rb`, located in  the `distributed_motion_surveillance/dms_client/daemons/terminal` folder
+	- Running with [`systemd`](https://en.wikipedia.org/wiki/Systemd): the file to use for configuration is `dms-client.service`, located in  the `distributed_motion_surveillance/dms_client/daemons/systemd` folder
 
-### 5. Optional: Integrate MotionMail with [Motion](https://motion-project.github.io/) on the Device Client
+### 5. Optional: Integrate DMSMail with [Motion](https://motion-project.github.io/) on the Device Client
 
-MotionMail is the **DMS** client-side component responsible for sending an email whenever a valid movement event is triggered in [Motion](https://motion-project.github.io/). These events are triggered through the [*on_picture_save* command ](http://www.lavrsen.dk/foswiki/bin/view/Motion/ConfigOptionOnPictureSave "on_picture_save command") and the [on_movie_end command](http://www.lavrsen.dk/foswiki/bin/view/Motion/ConfigOptionOnMovieEnd "on_movie_end command") in [Motion](https://motion-project.github.io/) and are how MotionMail gets called. 
+DMSMail is the **DMS** client-side component responsible for sending an email whenever a valid movement event is triggered in [Motion](https://motion-project.github.io/). These events are triggered through the [*on_picture_save* command ](http://www.lavrsen.dk/foswiki/bin/view/Motion/ConfigOptionOnPictureSave "on_picture_save command") and the [on_movie_end command](http://www.lavrsen.dk/foswiki/bin/view/Motion/ConfigOptionOnMovieEnd "on_movie_end command") in [Motion](https://motion-project.github.io/) and are how DMSMail gets called.
 
 The syntax for these [Motion](https://motion-project.github.io/) commands are:
-  
+
 	<on_picture_save|on_movie_end> <absolute path to ruby> <absolute path to mail.rb> <%D %f %t>
 
 These commands are saved in the [Motion](https://motion-project.github.io/) configuration file called `motion.conf` (located in `/etc/motion`).
 
 > **Note:** the parameters passed on this command (<%D %f %t>) are called *conversion specifiers* and are described in detail in the [Motion](https://motion-project.github.io/) documentation on [ConversionSpecifiers](http://www.lavrsen.dk/foswiki/bin/view/Motion/ConversionSpecifiers "ConversionSpecifiers").
 
-1. Update the [Motion](https://motion-project.github.io/) `motion.conf` file to call MotionMail on picture save (or movie end)
+1. Update the [Motion](https://motion-project.github.io/) `motion.conf` file to call DMSMail on picture save (or movie end)
 
 	The easiest way to edit this file is to append the `on_picture_save` or `on_movie_end` command at the end of the `motion.conf` file. For example:
 
-		$ sudo sh -c "echo 'on_picture_save /usr/bin/ruby /etc/distributed-motion-surveillance/motion_mail/mail.rb %D %f %t' >> /etc/motion/motion.conf"
+		$ sudo sh -c "echo 'on_picture_save /usr/bin/ruby /etc/distributed-motion-surveillance/dms_mail/mail.rb %D %f %t' >> /etc/motion/motion.conf"
 
 2. Restart [Motion](https://motion-project.github.io/) to have the update to `motion.conf` take effect
 
 		$ sudo /etc/init.d/motion restart
-		
+
 	or if running with [`systemd`](https://en.wikipedia.org/wiki/Systemd)
 
 		$ sudo service motion restart
-		
-MotionMail will now generate and send an email whenever [Motion](https://motion-project.github.io/) generates an `on_picture_save` or `on_movie_end` command.
+
+DMSMail will now generate and send an email whenever [Motion](https://motion-project.github.io/) generates an `on_picture_save` or `on_movie_end` command.
 
 ### 6. Configuration Testing & Troubleshooting
 
-At this point, **DMS** should now be properly installed and configured on both the server and client devices. Once both the MotionServer and MotionClient daemons are running, **DMS** should:
+At this point, **DMS** should now be properly installed and configured on both the server and client devices. Once both the DMSServer and DMSClient daemons are running, **DMS** should:
 
  1. Watch for relevant device IDs present on the network at a regular interval
  2. Start/stop [Motion](https://motion-project.github.io/) when relevant device IDs join/leave the network
- 3. Generate and send an email when an event of interest is generated by [Motion](https://motion-project.github.io/) (assuming that the MotionMail component has been installed)
+ 3. Generate and send an email when an event of interest is generated by [Motion](https://motion-project.github.io/) (assuming that the DMSMail component has been installed)
 
 #### Running a Typical Use Case
-The simplest means for testing **DMS** is to remove a device from the network (*i.e.*, disable the device's networking capability), and watch (or listen, if so configured) MotionServer and MotionClient process a motion state event (in this instance, MotionServer will send an 'enable' to all clients). Recall also that individual **DMS** components can be configured to generate execution log files.
+The simplest means for testing **DMS** is to remove a device from the network (*i.e.*, disable the device's networking capability), and watch (or listen, if so configured) DMSServer and DMSClient process a motion state event (in this instance, DMSServer will send an 'enable' to all clients). Recall also that individual **DMS** components can be configured to generate execution log files.
 
 #### Unit Testing the DMS Libs Component
 As an aid in troubleshooting issues (generally, they are configuration and environment-related), **DMS** is shipped with a `tests` folder as part of the Lib component. This `tests` folder contains a number of Ruby unit tests designed to verify operation of each of the library packages used in the Lib component.

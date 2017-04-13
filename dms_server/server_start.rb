@@ -8,6 +8,6 @@ require_relative 'server_connector'
 require_relative 'server_manager'
 require_relative 'server_config'
 
-motion_server = ServerManager.new
+dms_server = ServerManager.new
 ServerConnector.new(ServerConfig::SERVER_PORT,
-                    motion_server.method(:determine_motion_state))
+                    dms_server.method(:determine_motion_state))
