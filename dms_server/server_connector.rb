@@ -40,14 +40,13 @@ class ServerConnector
   # into the entry-point routine on each client connection
   #
   def server_loop(server)
-    while (client = server.accept)
-      fork do
+    loop do
+      Thread.start(server.accept) do |client|
         _unused, remote_port, _unused, remote_ip = client.peeraddr
         client.puts @entrypoint_routine.call
         @server.logging "connection from #{remote_ip}:#{remote_port}"
         client.close
       end
-      client.close
     end
   end
 end

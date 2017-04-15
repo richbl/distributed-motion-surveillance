@@ -51,7 +51,6 @@ class ClientConnector
       # for additional client-specific processing
       #
       when 'enable', 'disable' then @entrypoint_routine.call(msg)
-
       else
         @client.logging "ignoring unexpected server response: #{msg}", 2
       end
