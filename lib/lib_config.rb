@@ -10,6 +10,7 @@
 module LibConfig
   APLAY = '/usr/bin/aplay'.freeze
   ARP = '/usr/sbin/arp'.freeze
+  GEM = '/usr/bin/gem'.freeze
   GREP = '/bin/grep'.freeze
   KILL = '/bin/kill'.freeze
   PING = '/bin/ping'.freeze

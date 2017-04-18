@@ -17,17 +17,19 @@ class TestLibConfig < Test::Unit::TestCase
   def test_lib_config_files
     assert_equal File.file?(LibConfig::APLAY), true
     assert_equal File.file?(LibConfig::ARP), true
+    assert_equal File.file?(LibConfig::GEM), true
     assert_equal File.file?(LibConfig::GREP), true
     assert_equal File.file?(LibConfig::KILL), true
     assert_equal File.file?(LibConfig::PING), true
     assert_equal File.file?(LibConfig::MOTION), true
   end
 
-  def test_lib_config_folders
+  def test_ruby_gems
     #
-    # NOTE: for this test to pass, motion must have first been run in the
-    # current session, else MOTION_PID_PATH has not yet been created
+    # these GEMS are required for proper operation
     #
-    assert_equal File.directory?(LibConfig::MOTION_PID_PATH), true
+    assert_equal system("#{LibConfig::GEM} list -i mail > /dev/null 2>&1"), true
+    assert_equal system("#{LibConfig::GEM} list -i thread > /dev/null 2>&1"),
+                 true
   end
 end
