@@ -233,7 +233,7 @@ As an aid in troubleshooting issues (generally, they are configuration and envir
 
 To run a Lib component unit test, from the command line, change directory into the `tests` folder and run a test:
 
-		$ ruby lib_audio_test.rb
+		$ ruby lib_config_test.rb
 
 The unit test results will be displayed as each test is completed.
 
