@@ -68,6 +68,11 @@ module ServerConfig
   SCAN_FOR_TIME = 0
 
   # ---------------------------------------------------------------------------
+  # interval (in seconds) between checks for change to motion_state
+  #
+  CHECK_INTERVAL = 15
+
+  # ---------------------------------------------------------------------------
   # start and end times (24-hour format) for motion to always be enabled
   #
   # ignored if SCAN_FOR_TIME == 0

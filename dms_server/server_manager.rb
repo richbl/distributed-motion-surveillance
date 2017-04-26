@@ -21,6 +21,7 @@ class ServerManager
   #
   def initialize
     @motion_state = 'disable'
+    @check_interval_time = Time.new
     @server = ServerLogging.new
     @server.logging "BEGIN #{self.class}"
   end
@@ -32,10 +33,27 @@ class ServerManager
   def determine_motion_state
     @server.logging 'checking motion state'
 
+    return @motion_state unless update_motion_state?
+
     if time_in_range? || !device_on_lan?
       enable_motion_daemon
     else
       disable_motion_daemon
+    end
+  end
+
+  # ---------------------------------------------------------------------------
+  # update motion_state if check interval (in seconds) is greater than the
+  # last update (check interval expired)
+  #
+  def update_motion_state?
+    cur_time = Time.new
+    if (cur_time - @check_interval_time).to_i >= ServerConfig::CHECK_INTERVAL
+      @check_interval_time = cur_time
+      @server.logging 'updating motion_state...'
+      true
+    else
+      false
     end
   end
 
