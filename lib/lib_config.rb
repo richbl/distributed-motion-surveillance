@@ -12,9 +12,7 @@ module LibConfig
   ARP = '/usr/sbin/arp'.freeze
   GEM = '/usr/bin/gem'.freeze
   GREP = '/bin/grep'.freeze
-  KILL = '/bin/kill'.freeze
+  PGREP = '/usr/bin/pgrep'.freeze
   PING = '/bin/ping'.freeze
   MOTION = '/usr/bin/motion'.freeze
-  MOTION_PID_PATH = '/var/run/motion'.freeze
-  MOTION_PID_NAME = 'motion.pid'.freeze
 end

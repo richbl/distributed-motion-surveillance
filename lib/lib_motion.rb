@@ -5,45 +5,39 @@
 #
 
 require_relative 'lib_config'
+require 'open3'
 
 # ----------------------------------------------------------------------------
 # motion library
 #
 module LibMotion
   # ----------------------------------------------------------------------------
-  # determine if motion is installed
+  # confirm that motion is installed
   #
   def self.confirm_motion_install?
     system('type motion > /dev/null 2>&1')
   end
 
   # ----------------------------------------------------------------------------
-  # self.running_motion determines whether motion is running using by checking
-  # existence of PID file
+  # determines whether motion is running, returning PID
   #
-  def self.running_motion?
-    File.file?("#{LibConfig::MOTION_PID_PATH}/#{LibConfig::MOTION_PID_NAME}")
+  def self.running_motion
+    Open3.popen3('pgrep motion') do |_stdin, stdout, _stderr, _wait_thr|
+      stdout.read.to_i
+    end
   end
 
   # ----------------------------------------------------------------------------
-  # determines PID ID for current motion process
-  #
-  def self.determine_motion_pid
-    return 0 unless running_motion?
-    File.read("#{LibConfig::MOTION_PID_PATH}/#{LibConfig::MOTION_PID_NAME}")
-  end
-
-  # ----------------------------------------------------------------------------
-  # self.motion_daemon(command) enable/disables motion using motion command
+  # enable/disables motion daemon
   #
   def self.motion_daemon?(command)
     case command
     when 'start'
-      return false if running_motion?
+      return false if running_motion > 0
       system("#{LibConfig::MOTION} > /dev/null 2>&1")
     when 'stop'
-      return false unless running_motion?
-      system("#{LibConfig::KILL} #{determine_motion_pid}")
+      return false unless (motion_pid = running_motion) > 0
+      Process.kill('KILL', motion_pid)
     end
     true
   end

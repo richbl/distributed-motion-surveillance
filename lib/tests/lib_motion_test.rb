@@ -15,8 +15,7 @@ require_relative '../lib_motion'
 class TestLibMotion < Test::Unit::TestCase
   def test_lib_motion_calls
     assert_equal LibMotion.confirm_motion_install?, true
-    assert_equal LibMotion.running_motion?, false
-    assert_equal LibMotion.determine_motion_pid, 0
+    assert_equal LibMotion.running_motion, 0
   end
 
   def test_lib_motion_daemon

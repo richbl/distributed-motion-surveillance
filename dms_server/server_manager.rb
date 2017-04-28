@@ -53,6 +53,7 @@ class ServerManager
       @server.logging 'updating motion_state...'
       true
     else
+      @server.logging 'no update to motion_state'
       false
     end
   end

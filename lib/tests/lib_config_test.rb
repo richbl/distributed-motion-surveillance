@@ -19,7 +19,7 @@ class TestLibConfig < Test::Unit::TestCase
     assert_equal File.file?(LibConfig::ARP), true
     assert_equal File.file?(LibConfig::GEM), true
     assert_equal File.file?(LibConfig::GREP), true
-    assert_equal File.file?(LibConfig::KILL), true
+    assert_equal File.file?(LibConfig::PGREP), true
     assert_equal File.file?(LibConfig::PING), true
     assert_equal File.file?(LibConfig::MOTION), true
   end
