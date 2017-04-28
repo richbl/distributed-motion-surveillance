@@ -22,9 +22,8 @@ module LibMotion
   # determines whether motion is running, returning PID
   #
   def self.running_motion
-    Open3.popen3('pgrep motion') do |_stdin, stdout, _stderr, _wait_thr|
-      stdout.read.to_i
-    end
+    stdout, _sterr, _status = Open3.capture3('pgrep motion')
+    stdout.to_i
   end
 
   # ----------------------------------------------------------------------------
