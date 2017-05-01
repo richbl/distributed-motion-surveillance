@@ -43,10 +43,10 @@ class ServerConnector
     loop do
       Thread.start(server.accept) do |client|
         _unused, remote_port, _unused, remote_ip = client.peeraddr
-        @server.logging "open connection from #{remote_ip}:#{remote_port}"
+        @server.logging "--> OPEN connection from #{remote_ip}:#{remote_port}"
         client.puts @entrypoint_routine.call
         client.close
-        @server.logging "close connection from #{remote_ip}:#{remote_port}"
+        @server.logging "<-- CLOSE connection from #{remote_ip}:#{remote_port}"
       end
     end
   end

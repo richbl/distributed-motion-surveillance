@@ -16,7 +16,7 @@ require_relative 'client_logging'
 #
 class ClientManager
   # ---------------------------------------------------------------------------
-  # initialize, and confirm that the motion program is installed/configured
+  # start logging and confirm that the motion program is installed
   #
   def initialize
     @client = ClientLogging.new

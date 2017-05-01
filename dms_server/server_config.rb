@@ -8,7 +8,8 @@ module ServerConfig
   # ---------------------------------------------------------------------------
   # enable (1) or disable (0) application logging
   #
-  # NOTE: passing in 2 sets logging to STDOUT (used when running as daemon)
+  # NOTE: passing in 2 sets logging to STDOUT (useful when debugging or
+  # running as daemon)
   #
   LOGGING = 2
 
@@ -73,7 +74,8 @@ module ServerConfig
   CHECK_INTERVAL = 15
 
   # ---------------------------------------------------------------------------
-  # start and end times (24-hour format) for motion to always be enabled
+  # start and end times (24-hour format) for motion to always be enabled,
+  # regardless of current IoT device existence on the LAN
   #
   # ignored if SCAN_FOR_TIME == 0
   #
@@ -93,10 +95,7 @@ module ServerConfig
   IP_RANGE = 100..254
 
   # ---------------------------------------------------------------------------
-  # MAC addresses of device(s) to search for on the LAN
-  #
-  # NOTE: the assumption is that these devices are on the LAN, else they won't
-  # be detected when ping'd
+  # MAC addresses of IoT device(s) to search for on the LAN
   #
   MACS_TO_FIND = ['24:da:9b:0d:53:8f', 'f8:cf:c5:d2:bb:9e'].freeze
 end

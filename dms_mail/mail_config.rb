@@ -8,7 +8,8 @@ module DMSMailConfig
   # ---------------------------------------------------------------------------
   # enable (1) or disable (0) application logging
   #
-  # NOTE: passing in 2 sets logging to STDOUT (used when running as daemon)
+  # NOTE: passing in 2 sets logging to STDOUT (useful when debugging or
+  # running as daemon)
   #
   LOGGING = 2
 

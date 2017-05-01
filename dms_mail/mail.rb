@@ -18,7 +18,7 @@ require_relative 'mail_logging'
 #
 class DMSMail
   # ---------------------------------------------------------------------------
-  # initialize
+  # initialize and start logging
   #
   def self.initialize
     @mail = DMSMailLogging.new
@@ -131,10 +131,7 @@ class DMSMail
   # see ruby gem mail documentation for mail management options
   #
   def self.generate_smtp_email(event_details, event_media)
-    # initialize SMTP values
     mail = LibMail::SMTP.new
-
-    # set email options
     mail_delivery_options(mail)
     mail_header(mail, event_details)
     mail.attach_file(event_media[:media])

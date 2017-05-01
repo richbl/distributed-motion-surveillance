@@ -25,14 +25,14 @@ class ClientConnector
   end
 
   # ---------------------------------------------------------------------------
-  # start client-side poll
+  # start client-side poll of dms server
   #
   def start_client(server_ip, server_port)
     loop do
       begin
         client_loop(TCPSocket.new(server_ip, server_port))
       rescue StandardError => se
-        p "client error: #{se}"
+        p "CLIENT ERROR: #{se}"
         @client.logging "CLIENT ERROR: #{se}", 3
       end
       sleep ClientConfig::CHECK_INTERVAL
@@ -48,7 +48,7 @@ class ClientConnector
       case msg = line.chop
 
       # on receipt of either 'enable' or 'disable,' call entry-point routine
-      # for additional client-specific processing
+      # for additional client-side processing
       #
       when 'enable', 'disable' then @entrypoint_routine.call(msg)
       else

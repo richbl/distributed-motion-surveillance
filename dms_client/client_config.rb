@@ -8,7 +8,8 @@ module ClientConfig
   # ---------------------------------------------------------------------------
   # enable (1) or disable (0) application logging
   #
-  # NOTE: passing in 2 sets logging to STDOUT (used when running as daemon)
+  # NOTE: passing in 2 sets logging to STDOUT (useful when debugging or
+  # running as daemon)
   #
   LOGGING = 2
 
@@ -30,7 +31,7 @@ module ClientConfig
   LOG_LOCATION = File.expand_path(File.dirname(__FILE__))
 
   # ---------------------------------------------------------------------------
-  # ip, port on which to run the dms server
+  # ip, port on which the dms server is running
   #
   SERVER_IP = 'localhost'.freeze
   SERVER_PORT = 1965

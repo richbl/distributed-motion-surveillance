@@ -24,11 +24,9 @@ module LibLog
   #
   def self.create_logfile(logger_type, log_location, log_filename)
     case logger_type
-
     when 1
       @logger ||= Logger.new(log_location + '/' + log_filename, 0,
                              50 * 1024 * 1024)
-
     when 2
       @logger ||= Logger.new(STDOUT)
     end

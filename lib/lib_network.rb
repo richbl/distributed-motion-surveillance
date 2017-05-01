@@ -14,8 +14,8 @@ require_relative 'lib_config'
 #
 module LibNetwork
   # ----------------------------------------------------------------------------
-  # self.ping_hosts uses shell ping (ICMP) to ping the address range passed in
-  # and freshen up the local arp cache
+  # use ping (ICMP) to ping the address range passed in and freshen up the
+  # local arp cache
   #
   def self.ping_hosts(ip_base, ip_range)
     threads = []
@@ -29,9 +29,8 @@ module LibNetwork
   end
 
   # ----------------------------------------------------------------------------
-  # self.find_macs uses shell arp to find mac addressed passed in
-  #
-  # NOTE: returns true if any mac passed in is found (e.g., mac1 | mac2 | mac3)
+  # use arp to find mac addressed passed in, returning true if any mac passed
+  # in is found (e.g., mac1 | mac2 | mac3)
   #
   def self.find_macs?(macs_to_find)
     mac_list_regex = ''

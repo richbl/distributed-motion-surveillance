@@ -11,7 +11,7 @@ require 'mail'
 #
 module LibMail
   # ---------------------------------------------------------------------------
-  # simple SMTP implementation using the ruby mail library
+  # SMTP implementation using the ruby mail library
   #
   class SMTP
     def initialize
@@ -19,7 +19,7 @@ module LibMail
     end
 
     # -------------------------------------------------------------------------
-    # simple SMTP implementation using the ruby mail library
+    # SMTP implementation using the ruby mail library
     #
     def delivery_options(address, port, domain, user_name, password,
                          authentication, enable_starttls_auto)

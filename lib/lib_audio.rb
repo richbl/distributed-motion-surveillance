@@ -12,8 +12,8 @@ require_relative 'lib_config'
 #
 module LibAudio
   # ----------------------------------------------------------------------------
-  # self.play_audio(audio_file) uses shell aplay command (system default) to
-  # play audio_file returning bool on success/failure
+  # uses shell aplay command (system default) to play audio_file returning
+  # bool on success/failure
   #
   def self.play_audio(audio_file)
     system("#{LibConfig::APLAY} -q " + audio_file)
