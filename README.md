@@ -74,7 +74,7 @@ Operationally, DMSServer and the various DMSClient component instances work in c
 
 The activity diagram below shows the work flow of these two components:
 
-![distributed_motion_surveillance_activity_diagram](https://cloud.githubusercontent.com/assets/10182110/25585512/c29c80e6-2e4f-11e7-8156-6f040a502aa4.png)
+![distributed_motion_surveillance_activity_diagram](https://cloud.githubusercontent.com/assets/10182110/25585867/7190843e-2e51-11e7-841a-5db7d2c5e228.png)
 
 ### DMSMail Operation
 
