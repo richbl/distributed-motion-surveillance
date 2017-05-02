@@ -5,7 +5,6 @@
 #
 
 require 'thread'
-require 'thwait'
 
 require_relative 'lib_config'
 
@@ -18,14 +17,14 @@ module LibNetwork
   # local arp cache
   #
   def self.ping_hosts(ip_base, ip_range)
-    threads = []
-
-    ip_range.each do |n|
+    children = ip_range.map do |n|
       address = ip_base + n.to_s
-      threads << (Thread.new { `#{LibConfig::PING} -q -c1 -W1 #{address}` })
+      spawn("ping -q -W 1 -c 1 #{address} > /dev/null 2>&1")
     end
-
-    ThreadsWait.all_waits(*threads)
+    children.each do |pid|
+      Process.wait(pid)
+    end
+    nil
   end
 
   # ----------------------------------------------------------------------------
