@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
+Restart=on-failure
 ExecStart=/usr/bin/ruby /etc/distributed-motion-surveillance/dms_client/client_start.rb
 
 
