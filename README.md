@@ -1,5 +1,7 @@
 # Distributed-Motion-Surveillance (DMS)
 
+> **Note:** If you're interested in this project, consider taking a look at the [**DMS<sup>3</sup>**](https://github.com/richbl/go-distributed-motion-s3 "Distributed Motion Surveillance Security System") project, which is a refactor of this project, rewritten in Go, and features greater functionality.
+
 **Distributed-Motion-Surveillance (DMS)** is a Ruby-based video surveillance system using the [Motion](https://motion-project.github.io/) motion detection software package to identify and respond to significant image capture changes in video camera streams. **DMS** differs from other video surveillance systems in that all video camera endpoints are "smart" devices capable of processing raw video streams on-board, rather than requiring a single centralized device to process all streams remotely. This approach greatly reduces network traffic during surveillance event activities, and evenly re-distributes video stream processing to participating endpoints.
 
 **DMS** uses a [client server model](https://en.wikipedia.org/wiki/Client%E2%80%93server_model) as its network architecture, where the server component is centrally responsible for the logic of enabling/disabling the video surveillance system, while each client endpoint participating in the system performs the real-time video monitoring, processing of video stream data, and notification and/or delivery of processed results based on local configuration policies.
